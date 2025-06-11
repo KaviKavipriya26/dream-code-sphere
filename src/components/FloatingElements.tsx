@@ -1,10 +1,18 @@
 
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Sphere, Box, Torus } from "@react-three/drei";
+import { Float } from "@react-three/drei";
 import * as THREE from "three";
 
-const FloatingShape = ({ position, color, shape }: { position: [number, number, number]; color: string; shape: "sphere" | "box" | "torus" }) => {
+const FloatingShape = ({ 
+  position, 
+  color, 
+  shape 
+}: { 
+  position: [number, number, number]; 
+  color: string; 
+  shape: "sphere" | "box" | "torus" 
+}) => {
   const meshRef = useRef<THREE.Mesh>(null);
 
   useFrame((state) => {
@@ -17,25 +25,28 @@ const FloatingShape = ({ position, color, shape }: { position: [number, number, 
   if (shape === "sphere") {
     return (
       <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-        <Sphere ref={meshRef} position={position} args={[0.5, 32, 32]}>
+        <mesh ref={meshRef} position={position}>
+          <sphereGeometry args={[0.5, 32, 32]} />
           <meshStandardMaterial color={color} transparent opacity={0.8} />
-        </Sphere>
+        </mesh>
       </Float>
     );
   } else if (shape === "box") {
     return (
       <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-        <Box ref={meshRef} position={position} args={[0.5, 0.5, 0.5]}>
+        <mesh ref={meshRef} position={position}>
+          <boxGeometry args={[0.5, 0.5, 0.5]} />
           <meshStandardMaterial color={color} transparent opacity={0.8} />
-        </Box>
+        </mesh>
       </Float>
     );
   } else {
     return (
       <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-        <Torus ref={meshRef} position={position} args={[0.5, 0.2, 16, 32]}>
+        <mesh ref={meshRef} position={position}>
+          <torusGeometry args={[0.5, 0.2, 16, 32]} />
           <meshStandardMaterial color={color} transparent opacity={0.8} />
-        </Torus>
+        </mesh>
       </Float>
     );
   }
