@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const About = () => {
   const timelineItems = [
@@ -105,29 +106,33 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <h2 className="text-4xl font-bold text-white text-center mb-12">My Journey</h2>
-            <div className="space-y-8">
-              {timelineItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  className="relative"
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-sm">
-                      {item.year}
+            
+            <ScrollArea className="w-full whitespace-nowrap rounded-md border border-blue-500/20">
+              <div className="flex w-max space-x-8 p-4">
+                {timelineItems.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                    className="flex-none w-80"
+                  >
+                    <div className="flex items-center mb-4">
+                      <div className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-sm">
+                        {item.year}
+                      </div>
+                      <div className="ml-4 h-px bg-gradient-to-r from-blue-500 to-transparent flex-1"></div>
                     </div>
-                    <div className="ml-4 h-px bg-gradient-to-r from-blue-500 to-transparent flex-1"></div>
-                  </div>
-                  <div className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10 ml-8">
-                    <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-                    <p className="text-blue-400 mb-3">{item.company}</p>
-                    <p className="text-gray-300">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                    <div className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10 h-48">
+                      <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                      <p className="text-blue-400 mb-3">{item.company}</p>
+                      <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
           </motion.div>
         </div>
       </div>
