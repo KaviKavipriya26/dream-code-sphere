@@ -19,8 +19,8 @@ const Hero = () => {
         
         <div className="text-center z-10 px-4 max-w-4xl mx-auto">
           <motion.div
-            initial={{ scale: 0, rotation: 180 }}
-            animate={{ scale: 1, rotation: 0 }}
+            initial={{ scale: 0, rotate: 180 }}
+            animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             className="mb-8"
           >
