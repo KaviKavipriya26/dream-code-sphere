@@ -1,23 +1,17 @@
 
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
-import { Float, Text3D, Center } from "@react-three/drei";
+import { Float } from "@react-three/drei";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
 
-const SkillIcon = ({ text, position, color }: { text: string; position: [number, number, number]; color: string }) => {
+const SkillSphere = ({ position, color }: { position: [number, number, number]; color: string }) => {
   return (
     <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <Center position={position}>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.3}
-          height={0.05}
-        >
-          {text}
-          <meshStandardMaterial color={color} />
-        </Text3D>
-      </Center>
+      <mesh position={position}>
+        <sphereGeometry args={[0.3, 32, 32]} />
+        <meshStandardMaterial color={color} />
+      </mesh>
     </Float>
   );
 };
@@ -96,11 +90,11 @@ const Skills = () => {
             <Canvas camera={{ position: [0, 0, 5] }}>
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
-              <SkillIcon text="React" position={[-2, 1, 0]} color="#61dafb" />
-              <SkillIcon text="Three.js" position={[2, 1, 0]} color="#ffffff" />
-              <SkillIcon text="Node.js" position={[0, -1, 0]} color="#339933" />
-              <SkillIcon text="TypeScript" position={[-1.5, -0.5, -1]} color="#3178c6" />
-              <SkillIcon text="Python" position={[1.5, 0.5, -1]} color="#3776ab" />
+              <SkillSphere position={[-2, 1, 0]} color="#61dafb" />
+              <SkillSphere position={[2, 1, 0]} color="#ffffff" />
+              <SkillSphere position={[0, -1, 0]} color="#339933" />
+              <SkillSphere position={[-1.5, -0.5, -1]} color="#3178c6" />
+              <SkillSphere position={[1.5, 0.5, -1]} color="#3776ab" />
             </Canvas>
           </motion.div>
 
