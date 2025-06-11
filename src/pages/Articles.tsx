@@ -1,12 +1,20 @@
 
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
+import InfiniteScrollLoader from "../components/InfiniteScrollLoader";
+import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import { Button } from "@/components/ui/button";
 
 const Articles = () => {
-  const articles = [
+  const [articles, setArticles] = useState<any[]>([]);
+  const [page, setPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(true);
+  const [isFetchingNextPage, setIsFetchingNextPage] = useState(false);
+
+  const allArticles = [
     {
       title: "Building Interactive 3D Experiences with React and Three.js",
       excerpt: "Learn how to create stunning 3D web experiences using React Three Fiber and modern web technologies.",
@@ -42,8 +50,81 @@ const Articles = () => {
       category: "CSS",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500",
       link: "#"
+    },
+    {
+      title: "Advanced React Patterns and Performance Optimization",
+      excerpt: "Deep dive into React performance optimization techniques and advanced patterns for complex applications.",
+      date: "2023-12-20",
+      readTime: "15 min read",
+      category: "React",
+      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=500",
+      link: "#"
+    },
+    {
+      title: "Modern CSS Grid and Flexbox Techniques",
+      excerpt: "Master modern layout techniques with CSS Grid and Flexbox for responsive web design.",
+      date: "2023-12-15",
+      readTime: "9 min read",
+      category: "CSS",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500",
+      link: "#"
+    },
+    {
+      title: "Building Scalable Node.js Applications",
+      excerpt: "Learn best practices for building and deploying scalable Node.js applications in production.",
+      date: "2023-12-10",
+      readTime: "11 min read",
+      category: "Backend",
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500",
+      link: "#"
+    },
+    {
+      title: "GraphQL vs REST: Choosing the Right API",
+      excerpt: "Compare GraphQL and REST APIs to make informed decisions for your next project.",
+      date: "2023-12-05",
+      readTime: "7 min read",
+      category: "API",
+      image: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=500",
+      link: "#"
     }
   ];
+
+  const fetchNextPage = () => {
+    if (isFetchingNextPage) return;
+    
+    setIsFetchingNextPage(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      const itemsPerPage = 2;
+      const startIndex = (page - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const newArticles = allArticles.slice(startIndex, endIndex);
+      
+      if (newArticles.length > 0) {
+        setArticles(prev => [...prev, ...newArticles]);
+        setPage(prev => prev + 1);
+      }
+      
+      // Check if we've loaded all articles
+      if (endIndex >= allArticles.length) {
+        setHasNextPage(false);
+      }
+      
+      setIsFetchingNextPage(false);
+    }, 1000);
+  };
+
+  // Load initial articles
+  useEffect(() => {
+    fetchNextPage();
+  }, []);
+
+  const { isFetching } = useInfiniteScroll({
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage
+  });
 
   return (
     <PageTransition>
@@ -68,10 +149,10 @@ const Articles = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {articles.map((article, index) => (
               <motion.article
-                key={index}
+                key={`${article.title}-${index}`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
                 whileHover={{ y: -10 }}
                 className="bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-blue-500/20 group"
               >
@@ -121,19 +202,10 @@ const Articles = () => {
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center mt-12"
-          >
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8"
-            >
-              View All Articles
-            </Button>
-          </motion.div>
+          <InfiniteScrollLoader 
+            isLoading={isFetchingNextPage} 
+            hasNextPage={hasNextPage} 
+          />
         </div>
       </div>
     </PageTransition>
