@@ -12,7 +12,7 @@ const ParticleBackground = () => {
   return (
     <Particles
       id="tsparticles"
-      particlesInit={particlesInit}
+      init={particlesInit}
       options={{
         background: {
           color: {
@@ -30,9 +30,7 @@ const ParticleBackground = () => {
               enable: true,
               mode: "repulse",
             },
-            resize: {
-              enable: true,
-            },
+            resize: true,
           },
           modes: {
             push: {
@@ -68,6 +66,7 @@ const ParticleBackground = () => {
           number: {
             density: {
               enable: true,
+              area: 800,
             },
             value: 80,
           },
