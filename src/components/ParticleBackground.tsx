@@ -1,19 +1,22 @@
 import { useCallback } from "react";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { Container } from "@tsparticles/engine";
+import type { Container, Engine } from "@tsparticles/engine";
 
 const ParticleBackground = () => {
-  const particlesInit = useCallback(async (container?: Container) => {
-    if (container) {
-      await loadSlim(container.engine);
-    }
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadSlim(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container?: Container) => {
+    console.log(container);
   }, []);
 
   return (
     <Particles
       id="tsparticles"
-      particlesLoaded={particlesInit}
+      init={particlesInit}
+      loaded={particlesLoaded}
       options={{
         background: {
           color: {
