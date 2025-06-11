@@ -68,7 +68,7 @@ const ParticleBackground = () => {
           number: {
             density: {
               enable: true,
-              value: 800,
+              area: 800,
             },
             value: 80,
           },
