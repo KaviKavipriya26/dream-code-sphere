@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { ExternalLink, Trophy, Code, Target } from "lucide-react";
 import PageTransition from "../components/PageTransition";
@@ -17,7 +16,7 @@ const CodingProfiles = () => {
       },
       color: "from-orange-500 to-yellow-500",
       icon: Code,
-      link: "#"
+      link: "https://leetcode.com/johndeveloper"
     },
     {
       platform: "GeeksforGeeks",
@@ -29,7 +28,7 @@ const CodingProfiles = () => {
       },
       color: "from-green-500 to-emerald-500",
       icon: Target,
-      link: "#"
+      link: "https://auth.geeksforgeeks.org/user/john_dev"
     },
     {
       platform: "Codeforces",
@@ -41,7 +40,7 @@ const CodingProfiles = () => {
       },
       color: "from-blue-500 to-cyan-500",
       icon: Trophy,
-      link: "#"
+      link: "https://codeforces.com/profile/johndev123"
     },
     {
       platform: "HackerRank",
@@ -53,7 +52,7 @@ const CodingProfiles = () => {
       },
       color: "from-green-600 to-green-400",
       icon: Code,
-      link: "#"
+      link: "https://www.hackerrank.com/john_developer"
     }
   ];
 
@@ -79,6 +78,10 @@ const CodingProfiles = () => {
       icon: "⚡"
     }
   ];
+
+  const handleViewProfile = (link: string) => {
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <PageTransition>
@@ -116,14 +119,14 @@ const CodingProfiles = () => {
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <profile.icon size={32} className="text-white" />
-                    <motion.a
+                    <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      href={profile.link}
+                      onClick={() => handleViewProfile(profile.link)}
                       className="text-gray-400 hover:text-blue-400 transition-colors"
                     >
                       <ExternalLink size={20} />
-                    </motion.a>
+                    </motion.button>
                   </div>
 
                   <h3 className="text-xl font-bold text-white mb-2">{profile.platform}</h3>
@@ -145,6 +148,7 @@ const CodingProfiles = () => {
                   </div>
 
                   <Button
+                    onClick={() => handleViewProfile(profile.link)}
                     className={`w-full mt-4 bg-gradient-to-r ${profile.color} hover:opacity-90 text-white font-semibold`}
                   >
                     View Profile

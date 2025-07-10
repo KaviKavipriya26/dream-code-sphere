@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import PageTransition from "../components/PageTransition";
@@ -13,48 +12,48 @@ const Projects = () => {
       description: "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "#",
-      live: "#"
+      github: "https://github.com/johndeveloper/ecommerce-platform",
+      live: "https://ecommerce-demo.johndeveloper.com"
     },
     {
-      title: "3D Portfolio Website",
+      title: "3D Portfolio Website", 
       description: "An interactive 3D portfolio showcasing Three.js capabilities with animated models, particle systems, and immersive user experience.",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500",
       tech: ["Three.js", "React", "Framer Motion", "WebGL"],
-      github: "#",
-      live: "#"
+      github: "https://github.com/johndeveloper/3d-portfolio",
+      live: "https://3d-portfolio.johndeveloper.com"
     },
     {
       title: "Task Management App",
       description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500",
       tech: ["React", "Firebase", "Material-UI", "Socket.io"],
-      github: "#",
-      live: "#"
+      github: "https://github.com/johndeveloper/task-manager",
+      live: "https://taskmanager.johndeveloper.com"
     },
     {
       title: "AI Chat Interface",
       description: "A modern chat interface with AI integration, featuring real-time messaging, voice recognition, and adaptive responses.",
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=500",
       tech: ["React", "Python", "OpenAI API", "WebSocket"],
-      github: "#",
-      live: "#"
+      github: "https://github.com/johndeveloper/ai-chat",
+      live: "https://ai-chat.johndeveloper.com"
     },
     {
       title: "Data Visualization Dashboard",
       description: "Interactive dashboard for complex data visualization with real-time charts, filtering, and export capabilities.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500",
       tech: ["React", "D3.js", "Python", "PostgreSQL"],
-      github: "#",
-      live: "#"
+      github: "https://github.com/johndeveloper/data-dashboard",
+      live: "https://dashboard.johndeveloper.com"
     },
     {
       title: "Mobile Banking App",
       description: "Secure mobile banking application with biometric authentication, transaction history, and budget tracking.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500",
       tech: ["React Native", "Node.js", "MongoDB", "Stripe"],
-      github: "#",
-      live: "#"
+      github: "https://github.com/johndeveloper/banking-app",
+      live: "https://banking-demo.johndeveloper.com"
     }
   ];
 
@@ -73,6 +72,14 @@ const Projects = () => {
     { name: "Database", skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL"] },
     { name: "Cloud", skills: ["AWS", "Azure", "GCP", "Docker"] }
   ];
+
+  const handleViewCode = (githubUrl: string) => {
+    window.open(githubUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleViewDemo = (liveUrl: string) => {
+    window.open(liveUrl, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <PageTransition>
@@ -121,22 +128,22 @@ const Projects = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
                         <div className="absolute top-2 right-2 flex space-x-2">
-                          <motion.a
+                          <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            href={project.github}
+                            onClick={() => handleViewCode(project.github)}
                             className="bg-slate-900/80 text-white p-1 rounded-full hover:bg-blue-600 transition-colors"
                           >
                             <Github size={16} />
-                          </motion.a>
-                          <motion.a
+                          </motion.button>
+                          <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            href={project.live}
+                            onClick={() => handleViewDemo(project.live)}
                             className="bg-slate-900/80 text-white p-1 rounded-full hover:bg-blue-600 transition-colors"
                           >
                             <ExternalLink size={16} />
-                          </motion.a>
+                          </motion.button>
                         </div>
                       </div>
 
@@ -159,12 +166,14 @@ const Projects = () => {
                           <Button
                             variant="outline"
                             size="sm"
+                            onClick={() => handleViewCode(project.github)}
                             className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white text-xs"
                           >
                             Code
                           </Button>
                           <Button
                             size="sm"
+                            onClick={() => handleViewDemo(project.live)}
                             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-xs"
                           >
                             Demo
