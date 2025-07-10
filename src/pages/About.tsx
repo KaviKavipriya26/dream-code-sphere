@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
@@ -30,6 +29,14 @@ const About = () => {
       company: "University of Technology",
       description: "Bachelor's degree in Computer Science with focus on web development and algorithms."
     }
+  ];
+
+  // Create additional timeline items for demonstration of 2D scrolling
+  const additionalSkills = [
+    { category: "Frontend", skills: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"] },
+    { category: "Backend", skills: ["Node.js", "Express", "PostgreSQL", "MongoDB"] },
+    { category: "Tools", skills: ["Git", "Docker", "AWS", "Figma"] },
+    { category: "Languages", skills: ["JavaScript", "Python", "Go", "SQL"] }
   ];
 
   return (
@@ -105,33 +112,80 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <h2 className="text-4xl font-bold text-white text-center mb-12">My Journey</h2>
+            <h2 className="text-4xl font-bold text-white text-center mb-12">My Journey & Skills</h2>
             
-            <ScrollArea className="w-full whitespace-nowrap rounded-md border border-blue-500/20">
-              <div className="flex w-max space-x-8 p-4">
-                {timelineItems.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    className="flex-none w-80"
-                  >
-                    <div className="flex items-center mb-4">
-                      <div className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-sm">
-                        {item.year}
+            <ScrollArea className="w-full h-96 rounded-md border border-blue-500/20">
+              <div className="grid grid-cols-2 gap-8 p-6" style={{ minWidth: '1200px', minHeight: '800px' }}>
+                {/* Timeline Section */}
+                <div className="space-y-8">
+                  <h3 className="text-2xl font-bold text-blue-400 mb-6">Career Timeline</h3>
+                  {timelineItems.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                      className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10"
+                    >
+                      <div className="flex items-center mb-4">
+                        <div className="bg-blue-500 text-white font-bold py-2 px-4 rounded-full text-sm">
+                          {item.year}
+                        </div>
+                        <div className="ml-4 h-px bg-gradient-to-r from-blue-500 to-transparent flex-1"></div>
                       </div>
-                      <div className="ml-4 h-px bg-gradient-to-r from-blue-500 to-transparent flex-1"></div>
-                    </div>
-                    <div className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10 h-48">
-                      <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                      <h4 className="text-xl font-semibold text-white mb-2">{item.title}</h4>
                       <p className="text-blue-400 mb-3">{item.company}</p>
                       <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Skills Grid Section */}
+                <div className="grid grid-cols-2 gap-6">
+                  <h3 className="text-2xl font-bold text-blue-400 mb-6 col-span-2">Technical Skills</h3>
+                  {additionalSkills.map((skillGroup, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
+                      className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10"
+                    >
+                      <h4 className="text-lg font-semibold text-white mb-4">{skillGroup.category}</h4>
+                      <div className="space-y-2">
+                        {skillGroup.skills.map((skill, skillIndex) => (
+                          <div key={skillIndex} className="flex items-center">
+                            <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 flex-shrink-0"></span>
+                            <span className="text-gray-300 text-sm">{skill}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Additional Content for More Scrolling */}
+                <div className="col-span-2 mt-8">
+                  <h3 className="text-2xl font-bold text-blue-400 mb-6">Projects & Achievements</h3>
+                  <div className="grid grid-cols-3 gap-6">
+                    {Array.from({ length: 6 }, (_, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 1.2 + i * 0.1 }}
+                        className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-4 border border-blue-500/10"
+                      >
+                        <div className="w-full h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg mb-4"></div>
+                        <h5 className="text-white font-medium mb-2">Project {i + 1}</h5>
+                        <p className="text-gray-400 text-xs">Description of the project and its key features.</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
               <ScrollBar orientation="horizontal" />
+              <ScrollBar orientation="vertical" />
             </ScrollArea>
           </motion.div>
         </div>
