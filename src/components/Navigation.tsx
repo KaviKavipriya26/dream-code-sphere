@@ -1,22 +1,27 @@
 
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useScrollNavigation } from "../hooks/useScrollNavigation";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const { activeSection, scrollToSection } = useScrollNavigation();
 
   const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/projects", label: "Projects" },
-    { path: "/skills", label: "Skills" },
-    { path: "/articles", label: "Articles" },
-    { path: "/coding-profiles", label: "Coding" },
-    { path: "/contact", label: "Contact" },
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "articles", label: "Articles" },
+    { id: "coding-profiles", label: "Coding" },
+    { id: "contact", label: "Contact" },
   ];
+
+  const handleNavClick = (sectionId: string) => {
+    scrollToSection(sectionId);
+    setIsOpen(false);
+  };
 
   return (
     <motion.nav
@@ -31,26 +36,26 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             className="text-xl font-bold text-white"
           >
-            <Link to="/" className="gradient-text">
+            <button onClick={() => scrollToSection('home')} className="gradient-text">
               Portfolio
-            </Link>
+            </button>
           </motion.div>
 
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => (
-                <motion.div key={item.path} whileHover={{ scale: 1.05 }}>
-                  <Link
-                    to={item.path}
+                <motion.div key={item.id} whileHover={{ scale: 1.05 }}>
+                  <button
+                    onClick={() => handleNavClick(item.id)}
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                      location.pathname === item.path
+                      activeSection === item.id
                         ? "text-blue-400 bg-blue-500/20"
                         : "text-gray-300 hover:text-blue-400 hover:bg-blue-500/10"
                     }`}
                   >
                     {item.label}
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
             </div>
@@ -78,18 +83,17 @@ const Navigation = () => {
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {navItems.map((item) => (
-            <motion.div key={item.path} whileHover={{ x: 10 }}>
-              <Link
-                to={item.path}
-                onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  location.pathname === item.path
+            <motion.div key={item.id} whileHover={{ x: 10 }}>
+              <button
+                onClick={() => handleNavClick(item.id)}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                  activeSection === item.id
                     ? "text-blue-400 bg-blue-500/20"
                     : "text-gray-300 hover:text-blue-400 hover:bg-blue-500/10"
                 }`}
               >
                 {item.label}
-              </Link>
+              </button>
             </motion.div>
           ))}
         </div>

@@ -3,38 +3,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { BrowserRouter } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Hero from "./pages/Hero";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import Skills from "./pages/Skills";
-import Contact from "./pages/Contact";
-import Articles from "./pages/Articles";
-import CodingProfiles from "./pages/CodingProfiles";
-import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
-
-const AnimatedRoutes = () => {
-  const location = useLocation();
-  
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Hero />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/articles" element={<Articles />} />
-        <Route path="/coding-profiles" element={<CodingProfiles />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AnimatePresence>
-  );
-};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -44,7 +17,7 @@ const App = () => (
       <BrowserRouter>
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
           <Navigation />
-          <AnimatedRoutes />
+          <Hero />
         </div>
       </BrowserRouter>
     </TooltipProvider>
