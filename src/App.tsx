@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Hero from "./pages/Hero";
+import ParticleBackground from "./components/ParticleBackground";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+          <ParticleBackground />
           <Navigation />
           <Hero />
         </div>
