@@ -16,7 +16,8 @@ const ParticleBackground = () => {
   return (
     <Particles
       id="tsparticles"
-      url=""
+      init={particlesInit}
+      loaded={particlesLoaded}
       options={{
         background: {
           color: {
@@ -32,7 +33,7 @@ const ParticleBackground = () => {
             },
             onHover: {
               enable: true,
-              mode: "repulse",
+              mode: ["attract", "connect"],
             },
             resize: {
               enable: true,
@@ -42,21 +43,33 @@ const ParticleBackground = () => {
             push: {
               quantity: 4,
             },
-            repulse: {
+            attract: {
               distance: 200,
+              duration: 0.4,
+              factor: 5,
+            },
+            connect: {
+              distance: 80,
+              links: {
+                opacity: 0.5,
+              },
+              radius: 60,
+            },
+            repulse: {
+              distance: 100,
               duration: 0.4,
             },
           },
         },
         particles: {
           color: {
-            value: "#3b82f6",
+            value: ["#3b82f6", "#8b5cf6", "#06b6d4"],
           },
           links: {
             color: "#3b82f6",
             distance: 150,
             enable: true,
-            opacity: 0.3,
+            opacity: 0.2,
             width: 1,
           },
           move: {
@@ -65,27 +78,54 @@ const ParticleBackground = () => {
             outModes: {
               default: "bounce",
             },
-            random: false,
-            speed: 1,
+            random: true,
+            speed: {
+              min: 0.5,
+              max: 2,
+            },
             straight: false,
+            attract: {
+              enable: true,
+              rotateX: 600,
+              rotateY: 1200,
+            },
           },
           number: {
             density: {
               enable: true,
+              width: 1920,
+              height: 1080,
             },
-            value: 80,
+            value: 100,
           },
           opacity: {
-            value: 0.3,
+            value: {
+              min: 0.1,
+              max: 0.5,
+            },
+            animation: {
+              enable: true,
+              speed: 1,
+              sync: false,
+            },
           },
           shape: {
-            type: "circle",
+            type: ["circle", "triangle"],
           },
           size: {
-            value: { min: 1, max: 3 },
+            value: { 
+              min: 1, 
+              max: 4 
+            },
+            animation: {
+              enable: true,
+              speed: 2,
+              sync: false,
+            },
           },
         },
         detectRetina: true,
+        smooth: true,
       }}
       className="absolute inset-0 -z-10"
     />
