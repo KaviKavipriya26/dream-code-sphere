@@ -84,11 +84,6 @@ const ParticleBackground = () => {
               max: 2,
             },
             straight: false,
-            attract: {
-              enable: true,
-              rotateX: 600,
-              rotateY: 1200,
-            },
           },
           number: {
             density: {
