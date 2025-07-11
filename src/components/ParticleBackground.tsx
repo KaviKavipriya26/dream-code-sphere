@@ -1,8 +1,8 @@
 
 import { useCallback } from "react";
-import Particles from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { Container, Engine } from "@tsparticles/engine";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import type { Container, Engine } from "tsparticles-engine";
 
 const ParticleBackground = () => {
   const particlesInit = useCallback(async (engine: Engine) => {
@@ -16,6 +16,8 @@ const ParticleBackground = () => {
   return (
     <Particles
       id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
       options={{
         background: {
           color: {
@@ -33,9 +35,7 @@ const ParticleBackground = () => {
               enable: true,
               mode: ["attract", "connect"],
             },
-            resize: {
-              enable: true,
-            },
+            resize: true,
           },
           modes: {
             push: {
