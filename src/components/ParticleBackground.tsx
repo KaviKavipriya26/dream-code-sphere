@@ -33,7 +33,7 @@ const ParticleBackground = () => {
             },
             onHover: {
               enable: true,
-              mode: ["attract", "connect"],
+              mode: "repulse",
             },
             resize: true,
           },
@@ -54,7 +54,7 @@ const ParticleBackground = () => {
               radius: 60,
             },
             repulse: {
-              distance: 100,
+              distance: 150,
               duration: 0.4,
             },
           },
