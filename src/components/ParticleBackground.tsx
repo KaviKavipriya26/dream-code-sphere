@@ -103,7 +103,7 @@ const ParticleBackground = () => {
             },
           },
           shape: {
-            type: ["circle", "triangle"],
+            type: "circle",
           },
           size: {
             value: { 
