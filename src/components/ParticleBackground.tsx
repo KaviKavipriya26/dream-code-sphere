@@ -61,13 +61,13 @@ const ParticleBackground = () => {
         },
         particles: {
           color: {
-            value: ["#3b82f6", "#8b5cf6", "#06b6d4"],
+            value: ["#ffffff", "#f1f5f9", "#e2e8f0"],
           },
           links: {
-            color: "#3b82f6",
+            color: "#ffffff",
             distance: 150,
             enable: true,
-            opacity: 0.2,
+            opacity: 0.4,
             width: 1,
           },
           move: {
@@ -89,12 +89,12 @@ const ParticleBackground = () => {
               width: 1920,
               height: 1080,
             },
-            value: 100,
+            value: 150,
           },
           opacity: {
             value: {
-              min: 0.1,
-              max: 0.5,
+              min: 0.3,
+              max: 0.7,
             },
             animation: {
               enable: true,
