@@ -89,12 +89,12 @@ const ParticleBackground = () => {
               width: 1920,
               height: 1080,
             },
-            value: 150,
+            value: 200,
           },
           opacity: {
             value: {
-              min: 0.3,
-              max: 0.7,
+              min: 0.7,
+              max: 1,
             },
             animation: {
               enable: true,
@@ -107,8 +107,8 @@ const ParticleBackground = () => {
           },
           size: {
             value: { 
-              min: 1, 
-              max: 4 
+              min: 3, 
+              max: 8 
             },
             animation: {
               enable: true,
@@ -120,7 +120,7 @@ const ParticleBackground = () => {
         detectRetina: true,
         smooth: true,
       }}
-      className="absolute inset-0 -z-10"
+      className="fixed inset-0 w-full h-full z-0 pointer-events-none"
     />
   );
 };
