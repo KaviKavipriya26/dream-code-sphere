@@ -101,7 +101,9 @@ const Hero = () => {
               <motion.a
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                href="#"
+                href="https://github.com/johndeveloper"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors"
               >
                 <Github size={32} />
@@ -109,7 +111,9 @@ const Hero = () => {
               <motion.a
                 whileHover={{ scale: 1.2, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}
-                href="#"
+                href="https://linkedin.com/in/johndeveloper"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-blue-400 transition-colors"
               >
                 <Linkedin size={32} />
