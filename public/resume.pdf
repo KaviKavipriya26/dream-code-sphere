@@ -1,0 +1,176 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Resources <<
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+>>
+>>
+/Contents 6 0 R
+>>
+endobj
+
+4 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+6 0 obj
+<<
+/Length 2000
+>>
+stream
+BT
+/F1 24 Tf
+50 720 Td
+(JOHN DEVELOPER) Tj
+0 -30 Td
+/F2 12 Tf
+(Creative Developer & Designer) Tj
+0 -20 Td
+(Email: john.developer@email.com | Phone: (555) 123-4567) Tj
+0 -15 Td
+(LinkedIn: linkedin.com/in/johndeveloper | GitHub: github.com/johndeveloper) Tj
+
+0 -40 Td
+/F1 16 Tf
+(PROFESSIONAL SUMMARY) Tj
+0 -20 Td
+/F2 11 Tf
+(Passionate full-stack developer with 5+ years of experience in creating) Tj
+0 -15 Td
+(modern web applications using React, Node.js, and cloud technologies.) Tj
+0 -15 Td
+(Experienced in agile development, UI/UX design, and leading technical projects.) Tj
+
+0 -30 Td
+/F1 16 Tf
+(TECHNICAL SKILLS) Tj
+0 -20 Td
+/F2 11 Tf
+(Frontend: React, TypeScript, Next.js, Vue.js, HTML5, CSS3, Tailwind CSS) Tj
+0 -15 Td
+(Backend: Node.js, Express, Python, Django, RESTful APIs, GraphQL) Tj
+0 -15 Td
+(Database: PostgreSQL, MongoDB, MySQL, Redis) Tj
+0 -15 Td
+(Tools: Git, Docker, AWS, Vercel, Figma, VS Code) Tj
+
+0 -30 Td
+/F1 16 Tf
+(WORK EXPERIENCE) Tj
+0 -20 Td
+/F1 12 Tf
+(Senior Full Stack Developer) Tj
+0 -15 Td
+/F2 11 Tf
+(Tech Innovation Corp | Jan 2022 - Present) Tj
+0 -15 Td
+(• Led development of customer portal using React and Node.js) Tj
+0 -12 Td
+(• Improved application performance by 40% through optimization) Tj
+0 -12 Td
+(• Mentored junior developers and conducted code reviews) Tj
+
+0 -25 Td
+/F1 12 Tf
+(Full Stack Developer) Tj
+0 -15 Td
+/F2 11 Tf
+(Digital Solutions Inc | Jun 2020 - Dec 2021) Tj
+0 -15 Td
+(• Built responsive web applications using React and Express) Tj
+0 -12 Td
+(• Integrated third-party APIs and payment systems) Tj
+0 -12 Td
+(• Collaborated with design team to implement pixel-perfect UIs) Tj
+
+0 -25 Td
+/F1 12 Tf
+(Frontend Developer) Tj
+0 -15 Td
+/F2 11 Tf
+(StartupXYZ | Jan 2019 - May 2020) Tj
+0 -15 Td
+(• Developed user interfaces using React and modern CSS) Tj
+0 -12 Td
+(• Implemented responsive design principles) Tj
+0 -12 Td
+(• Optimized applications for maximum speed and scalability) Tj
+
+0 -30 Td
+/F1 16 Tf
+(EDUCATION) Tj
+0 -20 Td
+/F1 12 Tf
+(Bachelor of Science in Computer Science) Tj
+0 -15 Td
+/F2 11 Tf
+(University of Technology | 2015 - 2019) Tj
+
+0 -25 Td
+/F1 16 Tf
+(PROJECTS) Tj
+0 -20 Td
+/F1 12 Tf
+(E-Commerce Platform) Tj
+0 -15 Td
+/F2 11 Tf
+(Full-stack e-commerce solution with React, Node.js, and Stripe integration) Tj
+0 -15 Td
+/F1 12 Tf
+(Task Management App) Tj
+0 -15 Td
+/F2 11 Tf
+(React-based productivity app with real-time collaboration features) Tj
+ET
+endstream
+endobj
+
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000245 00000 n 
+0000000317 00000 n 
+0000000384 00000 n 
+trailer
+<<
+/Size 7
+/Root 1 0 R
+>>
+startxref
+2436
+%%EOF
