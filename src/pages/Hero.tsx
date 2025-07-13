@@ -80,6 +80,12 @@ const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = '/resume.pdf';
+                  link.download = 'John_Developer_Resume.pdf';
+                  link.click();
+                }}
                 className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white font-semibold px-8 py-3 rounded-full transform transition-all duration-300 hover:scale-105"
               >
                 Download Resume
