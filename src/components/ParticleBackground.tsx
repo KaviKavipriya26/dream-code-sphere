@@ -107,8 +107,8 @@ const ParticleBackground = () => {
           },
           size: {
             value: { 
-              min: 3, 
-              max: 8 
+              min: 1, 
+              max: 3 
             },
             animation: {
               enable: true,
