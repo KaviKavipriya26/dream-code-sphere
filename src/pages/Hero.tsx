@@ -29,7 +29,7 @@ const Hero = () => {
           <FloatingElements />
           
           <div className="container mx-auto px-6 lg:px-8 z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto min-h-[80vh]">
+            <div className="grid lg:grid-cols-2 gap-16 items-center justify-center max-w-6xl mx-auto min-h-[80vh]">
               {/* Left side - Text content */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -103,7 +103,7 @@ const Hero = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex justify-center lg:justify-end"
+                className="flex justify-center"
               >
                 <div className="relative">
                   {/* Gradient glow background */}
