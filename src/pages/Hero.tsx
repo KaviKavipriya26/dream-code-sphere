@@ -38,24 +38,49 @@ const Hero = () => {
                 className="text-left space-y-6 flex flex-col justify-center"
               >
                 {/* Greeting */}
-                <div className="space-y-2">
-                  <h3 className="text-2xl md:text-3xl text-white font-medium">
+                <div className="space-y-4">
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-light tracking-wide"
+                  >
                     Hello, It's Me
-                  </h3>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-                    <span className="gradient-text">John Developer</span>
-                  </h1>
-                  <h2 className="text-2xl md:text-3xl text-white font-medium">
+                  </motion.h3>
+                  <motion.h1 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
+                  >
+                    <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                      John Developer
+                    </span>
+                  </motion.h1>
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                    className="text-2xl md:text-3xl lg:text-4xl text-white font-semibold"
+                  >
                     And I'm a{" "}
-                    <span className="text-blue-400 font-bold">Full Stack Developer</span>
-                  </h2>
+                    <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent font-bold">
+                      Full Stack Developer
+                    </span>
+                  </motion.h2>
                 </div>
 
                 {/* Description */}
-                <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
-                  I'm a web developer with extensive experience for over 3 years. 
-                  My expertise is to create web applications, frontend design, backend development, and many more...
-                </p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.0 }}
+                  className="text-xl text-gray-300 leading-relaxed max-w-2xl font-light tracking-wide"
+                >
+                  I'm a passionate web developer with extensive experience for over 3 years. 
+                  My expertise lies in creating stunning web applications, intuitive frontend designs, 
+                  robust backend development, and delivering exceptional digital experiences.
+                </motion.p>
 
                 {/* Social Links */}
                 <div className="flex space-x-4 pt-4">
