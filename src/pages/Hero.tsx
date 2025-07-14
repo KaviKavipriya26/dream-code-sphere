@@ -98,50 +98,6 @@ const Hero = () => {
                 </div>
               </motion.div>
 
-              {/* Right side - Circular photo with gradient border */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex justify-center"
-              >
-                <div className="relative">
-                  {/* Gradient glow background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-full blur-xl opacity-60 scale-110 animate-pulse"></div>
-                  
-                  {/* Gradient border */}
-                  <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 p-1">
-                    <div className="w-full h-full rounded-full overflow-hidden bg-slate-900">
-                      <img 
-                        src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=500&h=500&fit=crop&crop=face"
-                        alt="John Developer - Full Stack Developer"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Mobile profile for small screens */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="lg:hidden order-first flex justify-center"
-              >
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-full blur-lg opacity-60 scale-110 animate-pulse"></div>
-                  <div className="relative w-64 h-64 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 p-1">
-                    <div className="w-full h-full rounded-full overflow-hidden bg-slate-900">
-                      <img 
-                        src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=500&h=500&fit=crop&crop=face"
-                        alt="John Developer - Full Stack Developer"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </div>
 
