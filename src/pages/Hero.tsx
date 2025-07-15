@@ -35,7 +35,7 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-left space-x-8 flex flex-row items-center justify-center flex-wrap"
+                className="text-center space-y-6 flex flex-col justify-center"
               >
                 {/* Greeting */}
                 <div className="space-y-4">
