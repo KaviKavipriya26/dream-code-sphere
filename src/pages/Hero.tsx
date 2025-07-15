@@ -75,7 +75,7 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.0 }}
-                  className="text-xl text-gray-300 leading-relaxed max-w-2xl font-light tracking-wide"
+                  className="text-xl text-gray-300 leading-relaxed max-w-2xl font-light tracking-wide text-left"
                 >
                   I'm a passionate web developer with extensive experience for over 3 years. 
                   My expertise lies in creating stunning web applications, intuitive frontend designs, 
