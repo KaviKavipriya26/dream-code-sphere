@@ -28,8 +28,8 @@ const Hero = () => {
           <ParticleBackground />
           <FloatingElements />
           
-          <div className="container mx-auto px-6 lg:px-8 z-10">
-            <div className="flex flex-col items-center justify-center min-h-[80vh] text-center space-y-8 max-w-4xl mx-auto">
+          <div className="container mx-auto px-6 lg:px-8 z-10 flex items-center justify-center min-h-screen">
+            <div className="flex flex-col items-center justify-center text-center space-y-8 max-w-4xl mx-auto">
               
               {/* Welcome Badge */}
               <motion.div
