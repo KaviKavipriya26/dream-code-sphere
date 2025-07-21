@@ -29,98 +29,106 @@ const Hero = () => {
           <FloatingElements />
           
           <div className="container mx-auto px-6 lg:px-8 z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center justify-center max-w-6xl mx-auto min-h-[80vh]">
-              {/* Left side - Text content */}
+            <div className="flex flex-col items-center justify-center min-h-[80vh] text-center space-y-8 max-w-4xl mx-auto">
+              
+              {/* Welcome Badge */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-center space-y-6 flex flex-col justify-center lg:order-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-blue-500/20 border border-blue-500/30 rounded-full px-6 py-2 text-blue-300 text-sm font-medium"
               >
-                {/* Greeting */}
-                <div className="space-y-4">
-                  <motion.h3 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-xl md:text-2xl lg:text-3xl text-gray-300 font-light tracking-wide"
-                  >
-                    Hello, It's Me
-                  </motion.h3>
-                  <motion.h1 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
-                  >
-                    <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
-                      John Developer
-                    </span>
-                  </motion.h1>
-                  <motion.h2 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    className="text-2xl md:text-3xl lg:text-4xl text-white font-semibold"
-                  >
-                    And I'm a{" "}
-                    <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent font-bold">
-                      Full Stack Developer
-                    </span>
-                  </motion.h2>
-                </div>
+                Welcome to my portfolio
+              </motion.div>
 
-                {/* Description */}
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.0 }}
-                  className="text-xl text-gray-300 leading-relaxed max-w-2xl font-light tracking-wide text-left"
+              {/* Main Title */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="space-y-6"
+              >
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                    Creative Developer
+                  </span>
+                  <br />
+                  <span className="text-white">& Designer</span>
+                </h1>
+              </motion.div>
+
+              {/* Description */}
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="text-xl text-gray-300 leading-relaxed max-w-3xl font-light tracking-wide"
+              >
+                Crafting beautiful, interactive experiences through code and creativity. 
+                Passionate about modern web technologies and innovative design solutions.
+              </motion.p>
+
+              {/* Action Buttons */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 pt-6"
+              >
+                <Button
+                  size="lg"
+                  onClick={() => {
+                    const projectsSection = document.getElementById('projects');
+                    if (projectsSection) {
+                      projectsSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 text-lg"
                 >
-                  I'm a passionate web developer with extensive experience for over 3 years. 
-                  My expertise lies in creating stunning web applications, intuitive frontend designs, 
-                  robust backend development, and delivering exceptional digital experiences.
-                </motion.p>
+                  View My Work →
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = '/resume.pdf';
+                    link.download = 'John_Developer_Resume.pdf';
+                    link.click();
+                  }}
+                  className="border-gray-300 text-gray-300 hover:bg-white hover:text-black font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg"
+                >
+                  ↓ Download Resume
+                </Button>
+              </motion.div>
 
-                {/* Social Links */}
-                <div className="flex space-x-4 pt-4">
-                  <motion.a
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    href="https://github.com/johndeveloper"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center justify-center"
-                  >
-                    <Github size={20} />
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    href="https://linkedin.com/in/johndeveloper"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center justify-center"
-                  >
-                    <Linkedin size={20} />
-                  </motion.a>
-                </div>
-
-                {/* CTA Button */}
-                <div className="pt-6">
-                  <Button
-                    size="lg"
-                    onClick={() => {
-                      const link = document.createElement('a');
-                      link.href = '/resume.pdf';
-                      link.download = 'John_Developer_Resume.pdf';
-                      link.click();
-                    }}
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 text-lg"
-                  >
-                    Download CV
-                  </Button>
-                </div>
+              {/* Social Links */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+                className="flex space-x-4 pt-4"
+              >
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  href="https://github.com/johndeveloper"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-gray-600 text-gray-400 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 flex items-center justify-center"
+                >
+                  <Github size={20} />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  href="https://linkedin.com/in/johndeveloper"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-full border border-gray-600 text-gray-400 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 flex items-center justify-center"
+                >
+                  <Linkedin size={20} />
+                </motion.a>
               </motion.div>
 
             </div>
