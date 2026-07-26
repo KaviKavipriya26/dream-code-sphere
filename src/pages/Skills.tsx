@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
+import TiltCard from "../components/TiltCard";
 
 const SkillSphere = ({ position, color }: { position: [number, number, number]; color: string }) => {
   return (
@@ -68,14 +69,14 @@ const Skills = () => {
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-50 mb-6">
               My <span className="gradient-text">Skills</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               I love learning new technologies and constantly improving my skills to create better digital experiences.
             </p>
           </motion.div>
@@ -83,7 +84,7 @@ const Skills = () => {
           {/* 3D Skills Visualization */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 1, delay: 0.2 }}
             className="h-64 mb-16 rounded-2xl overflow-hidden bg-slate-800/30 backdrop-blur-sm border border-blue-500/20"
           >
@@ -104,31 +105,37 @@ const Skills = () => {
               <motion.div
                 key={categoryIndex}
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: 0.4 + categoryIndex * 0.1 }}
-                className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20"
+                className="h-full"
               >
-                <h3 className="text-xl font-semibold text-white mb-6 text-center">
-                  {category.title}
-                </h3>
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-gray-300 text-sm">{skill.name}</span>
-                        <span className="text-blue-400 text-sm">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-slate-700 rounded-full h-2">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1, delay: 0.6 + categoryIndex * 0.1 + skillIndex * 0.05 }}
-                          className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"
-                        />
-                      </div>
+                <TiltCard className="h-full">
+                  <div className="bg-slate-800/50 backdrop-blur-[18px] rounded-2xl p-6 border border-white/5 h-full relative z-10">
+                    <h3 className="text-xl font-semibold text-slate-50 mb-6 text-center">
+                      {category.title}
+                    </h3>
+                    <div className="space-y-4">
+                      {category.skills.map((skill, skillIndex) => (
+                        <div key={skillIndex}>
+                          <div className="flex justify-between items-center mb-2">
+                            <span className="text-slate-300 text-sm">{skill.name}</span>
+                            <span className="text-blue-400 text-sm">{skill.level}%</span>
+                          </div>
+                          <div className="w-full bg-slate-900/50 rounded-full h-2 overflow-hidden border border-white/5">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${skill.level}%` }}
+                              transition={{ duration: 1, delay: 0.6 + categoryIndex * 0.1 + skillIndex * 0.05 }}
+                              className="bg-gradient-to-r from-blue-500 to-cyan-400 h-2 rounded-full relative"
+                            >
+                              <div className="absolute inset-0 bg-white/20 blur-[2px]" />
+                            </motion.div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                </TiltCard>
               </motion.div>
             ))}
           </div>

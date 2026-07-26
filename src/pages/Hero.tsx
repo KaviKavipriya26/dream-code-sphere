@@ -12,6 +12,7 @@ import CodingProfiles from "./CodingProfiles";
 import Contact from "./Contact";
 import { Button } from "@/components/ui/button";
 import profileImg from "@/assets/profile.jpg";
+import TypewriterText from "../components/TypewriterText";
 
 const socials = [
   { icon: Github, href: "https://github.com/", label: "GitHub" },
@@ -36,20 +37,20 @@ const Hero = () => {
           <ParticleBackground />
           <FloatingElements />
 
-          <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-20">
-            <div className="grid grid-cols-1 md:grid-cols-[55%_45%] items-center gap-12 md:gap-[70px]">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-[60px] lg:gap-[100px]">
               {/* LEFT - Text */}
               <motion.div
                 initial={{ opacity: 0, x: -60 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="order-2 md:order-1 text-center md:text-left flex flex-col items-center md:items-start space-y-6 md:pr-4"
+                className="order-2 lg:order-1 text-left flex flex-col items-start max-w-[520px] w-full mx-auto lg:mx-0"
               >
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="inline-flex items-center gap-2 bg-blue-500/15 border border-blue-500/30 rounded-full px-4 py-1.5 text-blue-300 text-sm font-medium backdrop-blur-sm"
+                  className="inline-flex items-center gap-2 bg-slate-900/50 border border-slate-700/50 rounded-full px-4 py-1.5 text-slate-300 text-[14px] font-medium backdrop-blur-sm mb-6"
                 >
                   <span>👋</span> Hello, I'm
                 </motion.div>
@@ -58,21 +59,27 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.7 }}
-                  className="leading-[1.05] tracking-tight"
+                  className="leading-[1.1] tracking-tight flex flex-col items-start mb-6"
                 >
-                  <span className="block text-[44px] sm:text-5xl md:text-6xl lg:text-[72px] font-extrabold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                    Kavipriya Kaliyappan
+                  <span className="block text-[36px] md:text-[44px] lg:text-[52px] font-extrabold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent mb-3">
+                    Kavipriya K
                   </span>
-                  <span className="block mt-3 text-2xl sm:text-3xl md:text-[36px] lg:text-[42px] font-semibold text-white/90">
-                    AI &amp; Data Science Engineer
+                  <span className="block text-[18px] md:text-[24px] lg:text-[28px] font-medium text-slate-300">
+                    <TypewriterText text="AI & Data Science Engineer" delay={0.6} />
                   </span>
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    animate={{ width: "60px" }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                    className="h-[3px] bg-gradient-to-r from-blue-500 to-purple-500 mt-5 rounded-full"
+                  />
                 </motion.h1>
 
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.45 }}
-                  className="text-[20px] leading-[1.9] text-gray-300 max-w-xl font-light"
+                  className="text-[15px] sm:text-[16px] leading-[1.8] text-slate-400 max-w-[480px] font-light mb-8"
                 >
                   Final-year AI &amp; Data Science student passionate about Data
                   Engineering, Full Stack Development, Python, React, SQL, Machine
@@ -83,7 +90,7 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="flex flex-col sm:flex-row gap-5 pt-2"
+                  className="flex flex-col sm:flex-row gap-[16px] mb-8 justify-start w-full"
                 >
                   <Button
                     onClick={() => {
@@ -92,17 +99,17 @@ const Hero = () => {
                       link.download = "Kavipriya_Resume.pdf";
                       link.click();
                     }}
-                    className="group w-[190px] h-[58px] bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/30 hover:shadow-purple-500/50"
+                    className="group w-full sm:w-[170px] h-[48px] bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-blue-500/25 border-0"
                   >
-                    <Download className="mr-2 h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+                    <Download className="mr-2 h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
                     Download Resume
                   </Button>
                   <Button
                     variant="outline"
                     onClick={() => scrollTo("projects")}
-                    className="group w-[190px] h-[58px] border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-purple-400 font-semibold rounded-full transition-all duration-300 hover:scale-105 backdrop-blur-sm hover:shadow-lg hover:shadow-purple-500/30"
+                    className="group w-full sm:w-[170px] h-[48px] border border-slate-700 bg-transparent text-slate-300 hover:bg-slate-800/50 hover:text-white font-medium rounded-full transition-all duration-300 hover:scale-105 backdrop-blur-sm"
                   >
-                    <FolderGit2 className="mr-2 h-5 w-5" />
+                    <FolderGit2 className="mr-2 h-4 w-4" />
                     View Projects
                   </Button>
                 </motion.div>
@@ -114,7 +121,7 @@ const Hero = () => {
                     hidden: {},
                     visible: { transition: { staggerChildren: 0.1, delayChildren: 0.9 } },
                   }}
-                  className="flex gap-[18px] pt-2"
+                  className="flex gap-[16px] justify-start w-full"
                 >
                   {socials.map(({ icon: Icon, href, label }) => (
                     <motion.a
@@ -129,10 +136,10 @@ const Hero = () => {
                       }}
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      style={{ width: 48, height: 48 }}
-                      className="rounded-full border border-white/15 bg-white/5 backdrop-blur-sm text-gray-300 hover:text-white hover:border-blue-400 hover:bg-blue-500/10 hover:shadow-lg hover:shadow-blue-500/40 transition-all duration-300 flex items-center justify-center"
+                      style={{ width: 44, height: 44 }}
+                      className="rounded-full border border-slate-700 bg-transparent backdrop-blur-sm text-slate-400 hover:text-white hover:border-slate-500 hover:bg-slate-800/50 transition-all duration-300 flex items-center justify-center"
                     >
-                      <Icon size={20} />
+                      <Icon size={18} />
                     </motion.a>
                   ))}
                 </motion.div>
@@ -143,29 +150,29 @@ const Hero = () => {
                 initial={{ opacity: 0, x: 60 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.9, ease: "easeOut" }}
-                className="order-1 md:order-2 flex justify-center"
+                className="order-1 lg:order-2 flex justify-center lg:justify-end w-full"
               >
-                <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px]">
+                <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[400px] lg:h-[400px]">
                   <motion.div
-                    animate={{ scale: [1, 1.15, 1], rotate: [0, 90, 0] }}
+                    animate={{ scale: [1, 1.05, 1], rotate: [0, 90, 0] }}
                     transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -inset-10 bg-gradient-to-tr from-blue-500 via-purple-500 to-cyan-400 rounded-full blur-3xl opacity-40"
+                    className="absolute -inset-8 bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-500 rounded-full blur-3xl opacity-30"
                   />
                   <motion.div
-                    animate={{ scale: [1.1, 1, 1.1], rotate: [0, -90, 0] }}
+                    animate={{ scale: [1.05, 1, 1.05], rotate: [0, -90, 0] }}
                     transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -inset-4 bg-gradient-to-br from-purple-600 to-blue-500 rounded-full blur-2xl opacity-30"
+                    className="absolute -inset-2 bg-gradient-to-br from-purple-600 to-blue-500 rounded-full blur-2xl opacity-20"
                   />
 
                   <motion.div
-                    animate={{ y: [0, -14, 0] }}
+                    animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative w-full h-full rounded-full p-2 bg-white/5 backdrop-blur-xl border border-white/20 shadow-2xl shadow-purple-500/30"
+                    className="relative w-full h-full rounded-full p-1 bg-slate-900/50 backdrop-blur-xl border border-white/5 shadow-2xl shadow-purple-500/20"
                   >
-                    <div className="relative w-full h-full rounded-full p-[3px] bg-gradient-to-tr from-blue-400 via-purple-500 to-cyan-400 animate-glow">
+                    <div className="relative w-full h-full rounded-full p-[4px] bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-500 animate-glow">
                       <img
                         src={profileImg}
-                        alt="Kavipriya Kaliyappan - AI & Data Science Engineer"
+                        alt="Kavipriya K - AI & Data Science Engineer"
                         width={420}
                         height={420}
                         className="w-full h-full rounded-full object-cover"

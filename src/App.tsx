@@ -7,7 +7,9 @@ import { BrowserRouter } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Hero from "./pages/Hero";
 import ParticleBackground from "./components/ParticleBackground";
-
+import CursorGlow from "./components/CursorGlow";
+import ScrollProgress from "./components/ScrollProgress";
+import LoadingScreen from "./components/LoadingScreen";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -16,7 +18,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+        <div className="min-h-screen bg-[#070B18]">
+          <LoadingScreen />
+          <ScrollProgress />
+          <CursorGlow />
           <ParticleBackground />
           <Navigation />
           <Hero />

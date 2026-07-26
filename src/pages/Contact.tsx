@@ -61,14 +61,14 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-50 mb-6">
               Get In <span className="gradient-text">Touch</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Have a project in mind or just want to chat? I'd love to hear from you. 
               Let's create something amazing together!
             </p>
@@ -78,59 +78,59 @@ const Contact = () => {
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20"
             >
-              <h2 className="text-3xl font-bold text-white mb-8">Send Message</h2>
+              <h2 className="text-3xl font-bold text-slate-50 mb-8">Send Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-gray-300 mb-2">Name</label>
+                    <label className="block text-slate-300 mb-2">Name</label>
                     <Input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="bg-slate-700/50 border-slate-600 text-white focus:border-blue-500"
+                      className="bg-slate-700/50 border-slate-600 text-slate-50 focus:border-blue-500"
                       placeholder="Your Name"
                     />
                   </div>
                   <div>
-                    <label className="block text-gray-300 mb-2">Email</label>
+                    <label className="block text-slate-300 mb-2">Email</label>
                     <Input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="bg-slate-700/50 border-slate-600 text-white focus:border-blue-500"
+                      className="bg-slate-700/50 border-slate-600 text-slate-50 focus:border-blue-500"
                       placeholder="your.email@example.com"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-gray-300 mb-2">Subject</label>
+                  <label className="block text-slate-300 mb-2">Subject</label>
                   <Input
                     type="text"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="bg-slate-700/50 border-slate-600 text-white focus:border-blue-500"
+                    className="bg-slate-700/50 border-slate-600 text-slate-50 focus:border-blue-500"
                     placeholder="Project Discussion"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-300 mb-2">Message</label>
+                  <label className="block text-slate-300 mb-2">Message</label>
                   <Textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="bg-slate-700/50 border-slate-600 text-white focus:border-blue-500 resize-none"
+                    className="bg-slate-700/50 border-slate-600 text-slate-50 focus:border-blue-500 resize-none"
                     placeholder="Tell me about your project or just say hello!"
                   />
                 </div>
@@ -141,7 +141,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold"
+                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-600 hover:to-indigo-600 text-slate-50 font-semibold"
                   >
                     <Send size={20} className="mr-2" />
                     Send Message
@@ -153,19 +153,19 @@ const Contact = () => {
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-8"
             >
               <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20">
-                <h2 className="text-3xl font-bold text-white mb-8">Contact Info</h2>
+                <h2 className="text-3xl font-bold text-slate-50 mb-8">Contact Info</h2>
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <motion.a
                       key={index}
                       href={info.href}
                       whileHover={{ scale: 1.05, x: 10 }}
-                      className="flex items-center space-x-4 text-gray-300 hover:text-blue-400 transition-colors"
+                      className="flex items-center space-x-4 text-slate-300 hover:text-blue-400 transition-colors"
                     >
                       <div className="bg-blue-500/20 p-3 rounded-full">
                         <info.icon size={24} className="text-blue-400" />
@@ -180,8 +180,8 @@ const Contact = () => {
               </div>
 
               <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20">
-                <h3 className="text-xl font-bold text-white mb-4">Let's Connect</h3>
-                <p className="text-gray-300 leading-relaxed">
+                <h3 className="text-xl font-bold text-slate-50 mb-4">Let's Connect</h3>
+                <p className="text-slate-300 leading-relaxed">
                   I'm always excited to work on new projects and collaborate with talented people. 
                   Whether you have a specific project in mind or just want to explore possibilities, 
                   feel free to reach out!

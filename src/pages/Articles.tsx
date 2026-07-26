@@ -134,14 +134,14 @@ const Articles = () => {
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-50 mb-6">
               Featured <span className="gradient-text">Articles</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Sharing knowledge and insights about web development, design, and the latest technologies.
             </p>
           </motion.div>
@@ -151,7 +151,7 @@ const Articles = () => {
               <motion.article
                 key={`${article.title}-${index}`}
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
                 whileHover={{ y: -10 }}
                 className="bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-blue-500/20 group"
@@ -171,7 +171,7 @@ const Articles = () => {
                 </div>
 
                 <div className="p-6">
-                  <div className="flex items-center text-gray-400 text-sm mb-3 space-x-4">
+                  <div className="flex items-center text-slate-400 text-sm mb-3 space-x-4">
                     <div className="flex items-center">
                       <Calendar size={16} className="mr-1" />
                       {new Date(article.date).toLocaleDateString()}
@@ -182,11 +182,11 @@ const Articles = () => {
                     </div>
                   </div>
 
-                  <h2 className="text-xl font-semibold text-white mb-3 leading-tight">
+                  <h2 className="text-xl font-semibold text-slate-50 mb-3 leading-tight">
                     {article.title}
                   </h2>
                   
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-slate-300 mb-6 leading-relaxed">
                     {article.excerpt}
                   </p>
 

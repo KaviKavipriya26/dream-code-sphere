@@ -15,7 +15,7 @@ const InfiniteScrollLoader = ({ isLoading, hasNextPage }: InfiniteScrollLoaderPr
         animate={{ opacity: 1, y: 0 }}
         className="text-center py-8"
       >
-        <p className="text-gray-400">No more items to load</p>
+        <p className="text-slate-400">No more items to load</p>
       </motion.div>
     );
   }
@@ -28,7 +28,7 @@ const InfiniteScrollLoader = ({ isLoading, hasNextPage }: InfiniteScrollLoaderPr
         className="flex justify-center items-center py-8"
       >
         <Loader2 className="h-8 w-8 animate-spin text-blue-500 mr-3" />
-        <span className="text-gray-300">Loading more items...</span>
+        <span className="text-slate-300">Loading more items...</span>
       </motion.div>
     );
   }

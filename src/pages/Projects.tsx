@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
+import TiltCard from "../components/TiltCard";
 import { Button } from "@/components/ui/button";
 
 const Projects = () => {
@@ -73,14 +74,14 @@ const Projects = () => {
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-50 mb-6">
               My <span className="gradient-text">Projects</span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Here are some of my featured projects that showcase my skills and experience in modern web development.
             </p>
           </motion.div>
@@ -91,71 +92,74 @@ const Projects = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-blue-500/20 group"
+                className="group"
               >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
-                  <div className="absolute top-4 right-4 flex space-x-2">
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleViewCode(project.github)}
-                      className="bg-slate-900/80 text-white p-2 rounded-full hover:bg-blue-600 transition-colors"
-                    >
-                      <Github size={20} />
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleViewDemo(project.live)}
-                      className="bg-slate-900/80 text-white p-2 rounded-full hover:bg-blue-600 transition-colors"
-                    >
-                      <ExternalLink size={20} />
-                    </motion.button>
-                  </div>
-                </div>
+                <TiltCard className="h-full">
+                  <div className="bg-slate-800/50 backdrop-blur-[18px] rounded-2xl overflow-hidden border border-white/5 h-full flex flex-col relative z-10">
+                    <div className="relative overflow-hidden shrink-0">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent pointer-events-none" />
+                      <div className="absolute top-4 right-4 flex space-x-2">
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => handleViewCode(project.github)}
+                          className="bg-slate-900/80 text-slate-50 p-2 rounded-full hover:bg-blue-600 transition-colors shadow-lg"
+                        >
+                          <Github size={20} />
+                        </motion.button>
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => handleViewDemo(project.live)}
+                          className="bg-slate-900/80 text-slate-50 p-2 rounded-full hover:bg-blue-600 transition-colors shadow-lg"
+                        >
+                          <ExternalLink size={20} />
+                        </motion.button>
+                      </div>
+                    </div>
 
-                <div className="p-6">
-                  <h3 className="text-2xl font-semibold text-white mb-3">{project.title}</h3>
-                  <p className="text-gray-300 mb-4 leading-relaxed">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                    <div className="p-6 flex flex-col grow">
+                      <h3 className="text-2xl font-semibold text-slate-50 mb-3">{project.title}</h3>
+                      <p className="text-slate-300 mb-4 leading-relaxed flex-grow">{project.description}</p>
+                      
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tech.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="bg-blue-500/10 border border-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
 
-                  <div className="flex space-x-3">
-                    <Button
-                      variant="outline"
-                      onClick={() => handleViewCode(project.github)}
-                      className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
-                    >
-                      <Github size={16} className="mr-2" />
-                      Code
-                    </Button>
-                    <Button
-                      onClick={() => handleViewDemo(project.live)}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                    >
-                      <ExternalLink size={16} className="mr-2" />
-                      Demo
-                    </Button>
+                      <div className="flex space-x-3 mt-auto">
+                        <Button
+                          variant="outline"
+                          onClick={() => handleViewCode(project.github)}
+                          className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-slate-50 bg-transparent flex-1"
+                        >
+                          <Github size={16} className="mr-2" />
+                          Code
+                        </Button>
+                        <Button
+                          onClick={() => handleViewDemo(project.live)}
+                          className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white flex-1"
+                        >
+                          <ExternalLink size={16} className="mr-2" />
+                          Demo
+                        </Button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </TiltCard>
               </motion.div>
             ))}
           </div>
