@@ -3,11 +3,9 @@ import { motion } from "framer-motion";
 import { Download, FolderGit2, Github, Linkedin, Mail, Code2 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
-import FloatingElements from "../components/FloatingElements";
 import About from "./About";
 import Projects from "./Projects";
 import Skills from "./Skills";
-import Articles from "./Articles";
 import CodingProfiles from "./CodingProfiles";
 import Contact from "./Contact";
 import { Button } from "@/components/ui/button";
@@ -35,7 +33,6 @@ const Hero = () => {
           className="relative min-h-screen h-screen flex items-center justify-center overflow-hidden"
         >
           <ParticleBackground />
-          <FloatingElements />
 
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-[60px] lg:gap-[100px]">
@@ -44,7 +41,7 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -60 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="order-2 lg:order-1 text-left flex flex-col items-start max-w-[520px] w-full mx-auto lg:mx-0"
+                className="order-1 text-left flex flex-col items-start max-w-[520px] w-full mx-auto lg:mx-0"
               >
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -65,7 +62,7 @@ const Hero = () => {
                     Kavipriya K
                   </span>
                   <span className="block text-[18px] md:text-[24px] lg:text-[28px] font-medium text-slate-300">
-                    <TypewriterText text="AI & Data Science Engineer" delay={0.6} />
+                    <TypewriterText text="Backend Developer | Python Developer | Full Stack Developer" delay={0.6} />
                   </span>
                   <motion.div 
                     initial={{ width: 0 }}
@@ -81,9 +78,9 @@ const Hero = () => {
                   transition={{ delay: 0.45 }}
                   className="text-[15px] sm:text-[16px] leading-[1.8] text-slate-400 max-w-[480px] font-light mb-8"
                 >
-                  Final-year AI &amp; Data Science student passionate about Data
-                  Engineering, Full Stack Development, Python, React, SQL, Machine
-                  Learning, and building scalable applications.
+                  Full Stack Developer skilled in Python, Flask, Node.js, React.js, and MongoDB.
+                  Passionate about building scalable REST APIs, secure authentication systems,
+                  and end-to-end web applications.
                 </motion.p>
 
                 <motion.div
@@ -150,7 +147,7 @@ const Hero = () => {
                 initial={{ opacity: 0, x: 60 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.9, ease: "easeOut" }}
-                className="order-1 lg:order-2 flex justify-center lg:justify-end w-full"
+                className="order-2 flex justify-center items-center w-full"
               >
                 <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[400px] lg:h-[400px]">
                   <motion.div
@@ -188,7 +185,6 @@ const Hero = () => {
         <div id="about"><About /></div>
         <div id="projects"><Projects /></div>
         <div id="skills"><Skills /></div>
-        <div id="articles"><Articles /></div>
         <div id="coding-profiles"><CodingProfiles /></div>
         <div id="contact"><Contact /></div>
       </div>

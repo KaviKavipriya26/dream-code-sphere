@@ -1,77 +1,108 @@
-
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { Float } from "@react-three/drei";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
-import TiltCard from "../components/TiltCard";
 
-const SkillSphere = ({ position, color }: { position: [number, number, number]; color: string }) => {
-  return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <mesh position={position}>
-        <sphereGeometry args={[0.3, 32, 32]} />
-        <meshStandardMaterial color={color} />
-      </mesh>
-    </Float>
-  );
+const skillRows = [
+  {
+    category: "Programming Languages",
+    direction: "left",
+    speed: "25s",
+    items: [
+      { name: "Python", icon: "python/3776AB" },
+      { name: "JavaScript", icon: "javascript/F7DF1E" },
+      { name: "SQL", icon: "mysql/4479A1" },
+    ]
+  },
+  {
+    category: "Backend Development",
+    direction: "right",
+    speed: "35s",
+    items: [
+      { name: "Flask", icon: "flask/ffffff" },
+      { name: "Node.js", icon: "nodedotjs/339933" },
+      { name: "Express.js", icon: "express/ffffff" },
+      { name: "REST API", icon: "fastapi/009688" },
+      { name: "JWT Auth", icon: "jsonwebtokens/ffffff" },
+      { name: "RBAC", icon: "auth0/EB5424" },
+    ]
+  },
+  {
+    category: "Frontend Development",
+    direction: "left",
+    speed: "30s",
+    items: [
+      { name: "React.js", icon: "react/61DAFB" },
+      { name: "React Hooks", icon: "react/61DAFB" },
+      { name: "Context API", icon: "react/61DAFB" },
+      { name: "React Router", icon: "reactrouter/CA4245" },
+      { name: "Responsive Design", icon: "css3/1572B6" },
+    ]
+  },
+  {
+    category: "Database & Tools",
+    direction: "right",
+    speed: "45s",
+    items: [
+      { name: "MongoDB", icon: "mongodb/47A248" },
+      { name: "MySQL", icon: "mysql/4479A1" },
+      { name: "SQLite", icon: "sqlite/003B57" },
+      { name: "Git", icon: "git/F05032" },
+      { name: "GitHub", icon: "github/ffffff" },
+      { name: "Postman", icon: "postman/FF6C37" },
+      { name: "VS Code", icon: "visualstudiocode/007ACC" },
+      { name: "npm", icon: "npm/CB3837" },
+      { name: "Vercel", icon: "vercel/ffffff" },
+      { name: "Linux", icon: "linux/FCC624" },
+    ]
+  }
+];
+
+// Helper to ensure we have enough items to fill ultrawide screens before looping
+const getRepeatedItems = (items: { name: string, icon: string }[]) => {
+  let repeated = [...items];
+  while (repeated.length < 10) {
+    repeated = [...repeated, ...items];
+  }
+  return [...repeated, ...repeated];
 };
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      skills: [
-        { name: "React", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "Next.js", level: 85 },
-        { name: "Tailwind CSS", level: 92 },
-        { name: "Framer Motion", level: 88 }
-      ]
-    },
-    {
-      title: "Backend Development",
-      skills: [
-        { name: "Node.js", level: 87 },
-        { name: "Python", level: 82 },
-        { name: "PostgreSQL", level: 85 },
-        { name: "MongoDB", level: 80 },
-        { name: "GraphQL", level: 75 }
-      ]
-    },
-    {
-      title: "3D & Animation",
-      skills: [
-        { name: "Three.js", level: 85 },
-        { name: "Blender", level: 70 },
-        { name: "WebGL", level: 78 },
-        { name: "GSAP", level: 82 },
-        { name: "Canvas API", level: 80 }
-      ]
-    },
-    {
-      title: "Tools & Others",
-      skills: [
-        { name: "Git", level: 92 },
-        { name: "Docker", level: 75 },
-        { name: "AWS", level: 78 },
-        { name: "Figma", level: 85 },
-        { name: "Jest", level: 80 }
-      ]
-    }
-  ];
-
   return (
     <PageTransition>
-      <div className="relative min-h-screen pt-20 pb-12">
+      <div className="relative min-h-screen pt-24 pb-20 overflow-hidden">
         <ParticleBackground />
         
-        <div className="max-w-7xl mx-auto px-4">
+        <style>
+          {`
+            @keyframes marquee-left {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            @keyframes marquee-right {
+              0% { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+            .marquee-track {
+              display: flex;
+              width: max-content;
+            }
+            .marquee-track:hover {
+              animation-play-state: paused;
+            }
+            .fade-edges {
+              mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+              -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            }
+          `}
+        </style>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center"
           >
             <h1 className="text-5xl md:text-6xl font-bold text-slate-50 mb-6">
               My <span className="gradient-text">Skills</span>
@@ -80,66 +111,54 @@ const Skills = () => {
               I love learning new technologies and constantly improving my skills to create better digital experiences.
             </p>
           </motion.div>
-
-          {/* 3D Skills Visualization */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="h-64 mb-16 rounded-2xl overflow-hidden bg-slate-800/30 backdrop-blur-sm border border-blue-500/20"
-          >
-            <Canvas camera={{ position: [0, 0, 5] }}>
-              <ambientLight intensity={0.5} />
-              <pointLight position={[10, 10, 10]} />
-              <SkillSphere position={[-2, 1, 0]} color="#61dafb" />
-              <SkillSphere position={[2, 1, 0]} color="#ffffff" />
-              <SkillSphere position={[0, -1, 0]} color="#339933" />
-              <SkillSphere position={[-1.5, -0.5, -1]} color="#3178c6" />
-              <SkillSphere position={[1.5, 0.5, -1]} color="#3776ab" />
-            </Canvas>
-          </motion.div>
-
-          {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={categoryIndex}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: 0.4 + categoryIndex * 0.1 }}
-                className="h-full"
-              >
-                <TiltCard className="h-full">
-                  <div className="bg-slate-800/50 backdrop-blur-[18px] rounded-2xl p-6 border border-white/5 h-full relative z-10">
-                    <h3 className="text-xl font-semibold text-slate-50 mb-6 text-center">
-                      {category.title}
-                    </h3>
-                    <div className="space-y-4">
-                      {category.skills.map((skill, skillIndex) => (
-                        <div key={skillIndex}>
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="text-slate-300 text-sm">{skill.name}</span>
-                            <span className="text-blue-400 text-sm">{skill.level}%</span>
-                          </div>
-                          <div className="w-full bg-slate-900/50 rounded-full h-2 overflow-hidden border border-white/5">
-                            <motion.div
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${skill.level}%` }}
-                              transition={{ duration: 1, delay: 0.6 + categoryIndex * 0.1 + skillIndex * 0.05 }}
-                              className="bg-gradient-to-r from-blue-500 to-cyan-400 h-2 rounded-full relative"
-                            >
-                              <div className="absolute inset-0 bg-white/20 blur-[2px]" />
-                            </motion.div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </TiltCard>
-              </motion.div>
-            ))}
-          </div>
         </div>
+
+        {/* Marquee Section */}
+        <div className="w-full flex flex-col gap-6 md:gap-10 mt-10 fade-edges py-4">
+          {skillRows.map((row, rowIndex) => (
+            <motion.div
+              key={rowIndex}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: rowIndex * 0.1 }}
+              className="flex flex-col"
+            >
+              {/* Category Label */}
+              <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-3">
+                <span className="text-sm md:text-base font-bold text-slate-500 uppercase tracking-widest pl-2">
+                  {row.category}
+                </span>
+              </div>
+
+              {/* Scrolling Track */}
+              <div 
+                className="marquee-track gap-4 md:gap-6 px-2 md:px-4"
+                style={{
+                  animation: `marquee-${row.direction} ${row.speed} linear infinite`
+                }}
+              >
+                {getRepeatedItems(row.items).map((item, itemIndex) => (
+                  <div 
+                    key={`${rowIndex}-${itemIndex}`}
+                    className="flex items-center space-x-3 md:space-x-4 bg-slate-800/40 backdrop-blur-sm border border-white/[0.08] px-6 py-3 md:px-8 md:py-4 rounded-full transition-all duration-300 hover:bg-slate-800/80 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] hover:-translate-y-1 cursor-default shrink-0"
+                  >
+                    <img 
+                      src={`https://cdn.simpleicons.org/${item.icon}`} 
+                      alt={item.name} 
+                      className="w-6 h-6 md:w-8 md:h-8"
+                      loading="lazy"
+                    />
+                    <span className="text-slate-100 font-semibold text-base md:text-lg tracking-wide whitespace-nowrap">
+                      {item.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        
       </div>
     </PageTransition>
   );

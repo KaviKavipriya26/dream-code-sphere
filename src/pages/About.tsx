@@ -1,171 +1,293 @@
 
 import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
-import ParticleBackground from "../components/ParticleBackground";
+import { GraduationCap, Briefcase, MapPin, Mail, Phone, Code2, Database, Shield, Layout } from "lucide-react";
+
+const quickFacts = [
+  {
+    icon: GraduationCap,
+    label: "Education",
+    value: "B.Tech AI & Data Science",
+    sub: "Muthayammal Engineering College (2022–2026) · CGPA: 8.17/10",
+    color: "from-blue-500 to-indigo-500",
+    border: "border-blue-500/20",
+  },
+  {
+    icon: Briefcase,
+    label: "Current Role",
+    value: "Full Stack Developer Intern",
+    sub: "Thinkinfo Expert Solutions Pvt. Ltd.",
+    color: "from-purple-500 to-pink-500",
+    border: "border-purple-500/20",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Salem, Tamil Nadu",
+    sub: "India",
+    color: "from-teal-500 to-cyan-500",
+    border: "border-teal-500/20",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "kavipriyak262005@gmail.com",
+    sub: "Available for opportunities",
+    color: "from-orange-500 to-amber-500",
+    border: "border-orange-500/20",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 8438842076",
+    sub: "WhatsApp / Call",
+    color: "from-green-500 to-emerald-500",
+    border: "border-green-500/20",
+  },
+];
+
+const whatIDo = [
+  {
+    icon: Code2,
+    title: "Backend Development",
+    desc: "Flask, Node.js, Express.js, REST APIs — designing and shipping secure, scalable endpoints.",
+    color: "text-blue-400",
+    bg: "bg-blue-500/10",
+    border: "border-blue-500/20",
+  },
+  {
+    icon: Layout,
+    title: "Frontend Development",
+    desc: "React.js with Hooks & Context API — building clean, responsive, and interactive UIs.",
+    color: "text-purple-400",
+    bg: "bg-purple-500/10",
+    border: "border-purple-500/20",
+  },
+  {
+    icon: Database,
+    title: "Database Design",
+    desc: "MongoDB, MySQL, SQLite — schema design, queries, and data modelling for production apps.",
+    color: "text-teal-400",
+    bg: "bg-teal-500/10",
+    border: "border-teal-500/20",
+  },
+  {
+    icon: Shield,
+    title: "Authentication & Security",
+    desc: "JWT-based auth, Role-Based Access Control (RBAC), and secure session management.",
+    color: "text-green-400",
+    bg: "bg-green-500/10",
+    border: "border-green-500/20",
+  },
+];
+
+const timeline = [
+  {
+    year: "2024–Present",
+    title: "Full Stack Developer Intern",
+    company: "Thinkinfo Expert Solutions Pvt. Ltd.",
+    description:
+      "Building and shipping 5+ features across 3 production web apps. Designed 15+ secure REST API endpoints with JWT authentication, implemented role-based access control, and resolved bugs in a Git/GitHub team workflow.",
+    tag: "Internship",
+    tagColor: "bg-blue-500",
+  },
+  {
+    year: "2022–2026",
+    title: "B.Tech — AI & Data Science",
+    company: "Muthayammal Engineering College, Salem",
+    description:
+      "Pursuing Bachelor of Technology in Artificial Intelligence & Data Science. CGPA: 8.17/10. Coursework includes Data Structures, Machine Learning, Full Stack Development, and Database Management.",
+    tag: "Education",
+    tagColor: "bg-purple-500",
+  },
+  {
+    year: "2022",
+    title: "Higher Secondary (12th)",
+    company: "Sri Saraswathi Vidhyalaya Matric Hr. Sec. School",
+    description:
+      "Completed HSC with 82.3%. Developed early interest in programming and problem solving.",
+    tag: "Education",
+    tagColor: "bg-indigo-500",
+  },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 const About = () => {
-  const timelineItems = [
-    {
-      year: "2023",
-      title: "Senior Full Stack Developer",
-      company: "Tech Innovation Corp",
-      description: "Leading development of scalable web applications using React, Node.js, and cloud technologies."
-    },
-    {
-      year: "2022",
-      title: "Front-End Developer",
-      company: "Creative Solutions Ltd",
-      description: "Specialized in creating responsive, animated user interfaces with modern frameworks."
-    },
-    {
-      year: "2021",
-      title: "Junior Developer",
-      company: "StartUp Hub",
-      description: "Gained experience in full-stack development and agile methodologies."
-    },
-    {
-      year: "2020",
-      title: "Computer Science Graduate",
-      company: "University of Technology",
-      description: "Bachelor's degree in Computer Science with focus on web development and algorithms."
-    }
-  ];
-
-  const skillCategories = [
-    { category: "Frontend", skills: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"] },
-    { category: "Backend", skills: ["Node.js", "Express", "PostgreSQL", "MongoDB"] },
-    { category: "Tools", skills: ["Git", "Docker", "AWS", "Figma"] },
-    { category: "Languages", skills: ["JavaScript", "Python", "Go", "SQL"] }
-  ];
-
   return (
     <PageTransition>
-      <div className="relative min-h-screen pt-20 pb-12">
-        <ParticleBackground />
-        
-        <div className="max-w-6xl mx-auto px-4">
+      <div className="relative min-h-screen pt-24 pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* ── Section Header ── */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-50 mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-50 mb-5">
               About <span className="gradient-text">Me</span>
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              I'm a passionate developer who loves creating beautiful, functional, and user-friendly digital experiences. 
-              With expertise in modern web technologies, I bring ideas to life through code.
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Full Stack Developer · Python Enthusiast · API Builder
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20"
-            >
-              <h2 className="text-3xl font-bold text-slate-50 mb-6">My Story</h2>
-              <p className="text-slate-300 leading-relaxed mb-4">
-                I started my journey in web development during college, fascinated by the power of code to create 
-                interactive experiences. What began as a curiosity quickly became a passion.
-              </p>
-              <p className="text-slate-300 leading-relaxed">
-                Today, I specialize in creating modern, responsive applications using cutting-edge technologies 
-                like React, Three.js, and advanced animation libraries. I believe in writing clean, maintainable 
-                code that not only works but inspires.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20"
-            >
-              <h2 className="text-3xl font-bold text-slate-50 mb-6">What I Do</h2>
-              <ul className="space-y-4 text-slate-300">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span>Frontend Development with React, TypeScript, and modern frameworks</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span>3D Web Experiences using Three.js and WebGL</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span>Animation and Motion Design with Framer Motion</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                  <span>Backend Development and API Design</span>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Career Timeline */}
+          {/* ── Professional Summary ── */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-16"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 mb-12"
           >
-            <h2 className="text-4xl font-bold text-slate-50 text-center mb-12">My Journey</h2>
-            <div className="space-y-8">
-              {timelineItems.map((item, index) => (
+            <h2 className="text-2xl font-bold text-slate-50 mb-4 flex items-center gap-2">
+              <span className="w-1 h-7 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full inline-block" />
+              Professional Summary
+            </h2>
+            <p className="text-slate-300 leading-relaxed text-[16px]">
+              I'm a Full Stack Developer with hands-on experience building production web applications
+              using <span className="text-blue-400 font-medium">Python, Flask, Node.js, React.js, and MongoDB</span>.
+              I've designed and shipped{" "}
+              <span className="text-purple-400 font-medium">15+ secure REST API endpoints</span>,
+              role-based authentication systems, and full-stack features across{" "}
+              <span className="text-teal-400 font-medium">3 live applications</span> — right from
+              database schema design to UI development. Currently, I'm seeking a{" "}
+              <span className="text-white font-semibold">Backend, Python, or Full Stack Developer</span> role
+              where I can build scalable, well-tested applications.
+            </p>
+          </motion.div>
+
+          {/* ── Quick Facts ── */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14"
+          >
+            {quickFacts.map(({ icon: Icon, label, value, sub, color, border }) => (
+              <motion.div
+                key={label}
+                variants={itemVariants}
+                className={`bg-slate-800/40 backdrop-blur-sm rounded-xl p-5 border ${border} flex items-start gap-4 hover:bg-slate-800/60 transition-all duration-300`}
+              >
+                <div className={`p-2.5 rounded-lg bg-gradient-to-br ${color} bg-opacity-10 shrink-0`}>
+                  <Icon size={20} className="text-white" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-0.5">{label}</p>
+                  <p className="text-slate-100 font-semibold text-[14px]">{value}</p>
+                  <p className="text-slate-400 text-[12px] mt-0.5 leading-snug">{sub}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* ── What I Do ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7 }}
+            className="mb-14"
+          >
+            <h2 className="text-3xl font-bold text-slate-50 text-center mb-10">
+              What I <span className="gradient-text">Do</span>
+            </h2>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="grid sm:grid-cols-2 gap-5"
+            >
+              {whatIDo.map(({ icon: Icon, title, desc, color, bg, border }) => (
+                <motion.div
+                  key={title}
+                  variants={itemVariants}
+                  className={`${bg} backdrop-blur-sm rounded-xl p-6 border ${border} hover:scale-[1.02] transition-all duration-300`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <Icon size={22} className={color} />
+                    <h3 className={`font-semibold text-[15px] ${color}`}>{title}</h3>
+                  </div>
+                  <p className="text-slate-300 text-[14px] leading-relaxed">{desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* ── Currently Working On ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7 }}
+            className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-teal-500/10 border border-white/10 rounded-2xl p-8 mb-14"
+          >
+            <h2 className="text-2xl font-bold text-slate-50 mb-3 flex items-center gap-3">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+              </span>
+              Currently Working On
+            </h2>
+            <p className="text-slate-300 leading-relaxed text-[16px]">
+              Building and shipping{" "}
+              <span className="text-blue-400 font-medium">5+ features</span> across{" "}
+              <span className="text-purple-400 font-medium">3 production web apps</span>, designing
+              secure REST APIs with{" "}
+              <span className="text-teal-400 font-medium">JWT authentication</span>, and resolving
+              bugs in a <span className="text-white font-medium">Git/GitHub team workflow</span>.
+            </p>
+          </motion.div>
+
+          {/* ── Journey Timeline ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-3xl font-bold text-slate-50 text-center mb-10">
+              My <span className="gradient-text">Journey</span>
+            </h2>
+            <div className="relative space-y-6 before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-[2px] before:bg-gradient-to-b before:from-blue-500 before:via-purple-500 before:to-indigo-500 pl-12">
+              {timeline.map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className="relative bg-slate-800/40 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300"
                 >
-                  <div className="flex items-center mb-4">
-                    <div className="bg-blue-500 text-slate-50 font-bold py-2 px-4 rounded-full text-sm">
-                      {item.year}
-                    </div>
-                    <div className="ml-4 h-px bg-gradient-to-r from-blue-500 to-transparent flex-1"></div>
+                  <span className="absolute -left-[38px] top-6 w-4 h-4 rounded-full border-2 border-blue-400 bg-slate-900" />
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <span className={`text-xs font-bold text-white px-3 py-1 rounded-full ${item.tagColor}`}>
+                      {item.tag}
+                    </span>
+                    <span className="text-sm text-slate-400 font-medium">{item.year}</span>
                   </div>
-                  <h4 className="text-xl font-semibold text-slate-50 mb-2">{item.title}</h4>
-                  <p className="text-blue-400 mb-3">{item.company}</p>
-                  <p className="text-slate-300 leading-relaxed">{item.description}</p>
+                  <h4 className="text-[17px] font-semibold text-slate-50 mb-1">{item.title}</h4>
+                  <p className="text-blue-400 text-sm mb-3 font-medium">{item.company}</p>
+                  <p className="text-slate-300 text-[14px] leading-relaxed">{item.description}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Technical Skills */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-          >
-            <h2 className="text-4xl font-bold text-slate-50 text-center mb-12">Technical Skills</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {skillCategories.map((skillGroup, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
-                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10"
-                >
-                  <h4 className="text-lg font-semibold text-slate-50 mb-4">{skillGroup.category}</h4>
-                  <div className="space-y-2">
-                    {skillGroup.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="flex items-center">
-                        <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 flex-shrink-0"></span>
-                        <span className="text-slate-300 text-sm">{skill}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
     </PageTransition>
@@ -173,3 +295,4 @@ const About = () => {
 };
 
 export default About;
+

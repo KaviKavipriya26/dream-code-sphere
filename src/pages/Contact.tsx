@@ -1,194 +1,124 @@
-
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, Code2, ArrowUpRight, FileText } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
+
+const contactMethods = [
+  {
+    id: "linkedin",
+    label: "LINKEDIN",
+    value: "linkedin.com/in/kavipriya",
+    href: "https://linkedin.com/in/kavipriya",
+    icon: Linkedin,
+  },
+  {
+    id: "github",
+    label: "GITHUB",
+    value: "github.com/KaviKavipriya26",
+    href: "https://github.com/KaviKavipriya26",
+    icon: Github,
+  },
+  {
+    id: "email",
+    label: "EMAIL",
+    value: "kavipriyak262005@gmail.com",
+    href: "mailto:kavipriyak262005@gmail.com",
+    icon: Mail,
+  },
+  {
+    id: "phone",
+    label: "MOBILE",
+    value: "+91 98765 43210", // Feel free to update with real phone number
+    href: "tel:+919876543210",
+    icon: Phone,
+  },
+  {
+    id: "leetcode",
+    label: "LEETCODE",
+    value: "leetcode.com/u/kavipriya",
+    href: "https://leetcode.com/u/kavipriya",
+    icon: Code2,
+  },
+  {
+    id: "resume",
+    label: "RESUME",
+    value: "Download My Resume",
+    href: "/resume.pdf",
+    icon: FileText,
+  }
+];
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    toast.success("Message sent successfully! I'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      value: "john.developer@example.com",
-      href: "mailto:john.developer@example.com"
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
-    },
-    {
-      icon: MapPin,
-      title: "Location",
-      value: "San Francisco, CA",
-      href: "#"
-    }
-  ];
-
   return (
     <PageTransition>
-      <div className="relative min-h-screen pt-20 pb-12">
+      <div className="relative min-h-screen pt-24 pb-24 flex items-center justify-center">
         <ParticleBackground />
         
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          
+          {/* Header Section */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="mb-14"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-50 mb-6">
-              Get In <span className="gradient-text">Touch</span>
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent mb-4">
+              CONTACT
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Have a project in mind or just want to chat? I'd love to hear from you. 
-              Let's create something amazing together!
+            <p className="text-lg md:text-xl text-slate-400 font-medium mb-8">
+              Let's build something amazing together
             </p>
+            <div className="h-[2px] w-16 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20"
-            >
-              <h2 className="text-3xl font-bold text-slate-50 mb-8">Send Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-slate-300 mb-2">Name</label>
-                    <Input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-slate-700/50 border-slate-600 text-slate-50 focus:border-blue-500"
-                      placeholder="Your Name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-slate-300 mb-2">Email</label>
-                    <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="bg-slate-700/50 border-slate-600 text-slate-50 focus:border-blue-500"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
+          {/* Cards Grid */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-left"
+          >
+            {contactMethods.map((method) => (
+              <motion.a
+                key={method.id}
+                href={method.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="group relative flex items-center p-5 md:p-6 bg-white/[0.03] border border-white/[0.08] rounded-2xl md:rounded-[24px] hover:bg-white/[0.05] hover:border-indigo-500/30 hover:-translate-y-1 transition-all duration-400 ease-out hover:shadow-[0_10px_40px_rgba(99,102,241,0.15)]"
+              >
+                {/* Icon Box */}
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 mr-4 md:mr-5 group-hover:scale-110 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-400 ease-out">
+                  <method.icon className="w-6 h-6 text-indigo-400 group-hover:text-indigo-300 transition-colors" />
                 </div>
-                <div>
-                  <label className="block text-slate-300 mb-2">Subject</label>
-                  <Input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="bg-slate-700/50 border-slate-600 text-slate-50 focus:border-blue-500"
-                    placeholder="Project Discussion"
-                  />
+                
+                {/* Text Content */}
+                <div className="flex flex-col min-w-0 flex-1 mr-4">
+                  <span className="text-[11px] md:text-xs font-bold text-slate-500 tracking-widest mb-1 md:mb-1.5 uppercase">
+                    {method.label}
+                  </span>
+                  <span className="text-slate-100 font-bold text-sm md:text-lg tracking-wide truncate">
+                    {method.value}
+                  </span>
                 </div>
-                <div>
-                  <label className="block text-slate-300 mb-2">Message</label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="bg-slate-700/50 border-slate-600 text-slate-50 focus:border-blue-500 resize-none"
-                    placeholder="Tell me about your project or just say hello!"
-                  />
-                </div>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-600 hover:to-indigo-600 text-slate-50 font-semibold"
-                  >
-                    <Send size={20} className="mr-2" />
-                    Send Message
-                  </Button>
-                </motion.div>
-              </form>
-            </motion.div>
 
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-8"
-            >
-              <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20">
-                <h2 className="text-3xl font-bold text-slate-50 mb-8">Contact Info</h2>
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <motion.a
-                      key={index}
-                      href={info.href}
-                      whileHover={{ scale: 1.05, x: 10 }}
-                      className="flex items-center space-x-4 text-slate-300 hover:text-blue-400 transition-colors"
-                    >
-                      <div className="bg-blue-500/20 p-3 rounded-full">
-                        <info.icon size={24} className="text-blue-400" />
-                      </div>
-                      <div>
-                        <p className="font-semibold">{info.title}</p>
-                        <p className="text-sm">{info.value}</p>
-                      </div>
-                    </motion.a>
-                  ))}
+                {/* Arrow Button */}
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/[0.1] flex items-center justify-center shrink-0 bg-slate-800/50 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 group-hover:border-transparent group-hover:shadow-lg group-hover:shadow-blue-500/25 transition-all duration-400 ease-out">
+                  <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
                 </div>
-              </div>
+              </motion.a>
+            ))}
+          </motion.div>
 
-              <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20">
-                <h3 className="text-xl font-bold text-slate-50 mb-4">Let's Connect</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  I'm always excited to work on new projects and collaborate with talented people. 
-                  Whether you have a specific project in mind or just want to explore possibilities, 
-                  feel free to reach out!
-                </p>
-              </div>
-            </motion.div>
-          </div>
         </div>
       </div>
     </PageTransition>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useScrollNavigation } from "../hooks/useScrollNavigation";
@@ -7,22 +7,10 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { activeSection, scrollToSection } = useScrollNavigation();
   const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0;
-    if (latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-    
-    if (latest > 50) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
+    setIsScrolled(latest > 50);
   });
 
   const navItems = [
@@ -30,7 +18,6 @@ const Navigation = () => {
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
-    { id: "articles", label: "Articles" },
     { id: "coding-profiles", label: "Coding" },
     { id: "contact", label: "Contact" },
   ];
@@ -43,7 +30,7 @@ const Navigation = () => {
   return (
     <motion.nav
       initial={{ y: -100 }}
-      animate={{ y: hidden ? -100 : 0 }}
+      animate={{ y: 0 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
         isScrolled 

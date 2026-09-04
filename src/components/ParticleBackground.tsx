@@ -89,16 +89,16 @@ const ParticleBackground = () => {
               width: 1920,
               height: 1080,
             },
-            value: 200,
+            value: 40,
           },
           opacity: {
             value: {
-              min: 0.7,
-              max: 1,
+              min: 0.2,
+              max: 0.45,
             },
             animation: {
               enable: true,
-              speed: 1,
+              speed: 0.8,
               sync: false,
             },
           },
