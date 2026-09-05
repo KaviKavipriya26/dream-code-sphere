@@ -93,19 +93,19 @@ const timeline = [
   },
   {
     year: "2022–2026",
-    title: "B.Tech — AI & Data Science",
+    title: "B.Tech — Artificial Intelligence & Data Science",
     company: "Muthayammal Engineering College, Salem",
     description:
-      "Pursuing Bachelor of Technology in Artificial Intelligence & Data Science. CGPA: 8.17/10. Coursework includes Data Structures, Machine Learning, Full Stack Development, and Database Management.",
+      "B.Tech in Artificial Intelligence & Data Science with a CGPA of 8.17/10. Built a strong foundation in Python and Database Management through academic projects and practical development.",
     tag: "Education",
     tagColor: "bg-purple-500",
   },
   {
     year: "2022",
     title: "Higher Secondary (12th)",
-    company: "Sri Saraswathi Vidhyalaya Matric Hr. Sec. School",
+    company: "Avvaiyar Government Girls Higher Secondary School, Dharmapuri",
     description:
-      "Completed HSC with 82.3%. Developed early interest in programming and problem solving.",
+      "Completed Higher Secondary Education (HSC) with 70%.",
     tag: "Education",
     tagColor: "bg-indigo-500",
   },

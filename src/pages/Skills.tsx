@@ -6,7 +6,7 @@ const skillRows = [
   {
     category: "Programming Languages",
     direction: "left",
-    speed: "25s",
+    speed: "45s",
     items: [
       { name: "Python", icon: "python/3776AB" },
       { name: "JavaScript", icon: "javascript/F7DF1E" },
@@ -16,7 +16,7 @@ const skillRows = [
   {
     category: "Backend Development",
     direction: "right",
-    speed: "35s",
+    speed: "55s",
     items: [
       { name: "Flask", icon: "flask/ffffff" },
       { name: "Node.js", icon: "nodedotjs/339933" },
@@ -29,7 +29,7 @@ const skillRows = [
   {
     category: "Frontend Development",
     direction: "left",
-    speed: "30s",
+    speed: "50s",
     items: [
       { name: "React.js", icon: "react/61DAFB" },
       { name: "React Hooks", icon: "react/61DAFB" },
@@ -41,7 +41,7 @@ const skillRows = [
   {
     category: "Database & Tools",
     direction: "right",
-    speed: "45s",
+    speed: "65s",
     items: [
       { name: "MongoDB", icon: "mongodb/47A248" },
       { name: "MySQL", icon: "mysql/4479A1" },
@@ -87,7 +87,7 @@ const Skills = () => {
               width: max-content;
             }
             .marquee-track:hover {
-              animation-play-state: paused;
+              animation-play-state: paused !important;
             }
             .fade-edges {
               mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);

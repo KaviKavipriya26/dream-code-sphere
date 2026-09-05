@@ -1,5 +1,5 @@
-
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Download, FolderGit2, Github, Linkedin, Mail, Code2 } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import ParticleBackground from "../components/ParticleBackground";
@@ -10,16 +10,30 @@ import CodingProfiles from "./CodingProfiles";
 import Contact from "./Contact";
 import { Button } from "@/components/ui/button";
 import profileImg from "@/assets/profile.jpg";
-import TypewriterText from "../components/TypewriterText";
 
 const socials = [
   { icon: Github, href: "https://github.com/", label: "GitHub" },
   { icon: Linkedin, href: "https://linkedin.com/", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:kavipriya@example.com", label: "Email" },
-  { icon: Code2, href: "https://leetcode.com/", label: "LeetCode" },
+  { icon: Mail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=kavipriyak262005@gmail.com", label: "Email" },
+  { icon: Code2, href: "https://www.geeksforgeeks.org/profile/kavipriyauh3x?tab=activity", label: "GeeksforGeeks" },
+];
+
+const roles = [
+  "Backend Developer",
+  "Python Developer",
+  "Full Stack Developer"
 ];
 
 const Hero = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 3500); // Wait 3.5 seconds before changing
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -56,14 +70,42 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.7 }}
-                  className="leading-[1.1] tracking-tight flex flex-col items-start mb-6"
+                  className="leading-[1.1] tracking-tight flex flex-col items-start mb-6 w-full"
                 >
-                  <span className="block text-[36px] md:text-[44px] lg:text-[52px] font-extrabold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent mb-3">
-                    Kavipriya K
+                  <span className="flex text-[36px] md:text-[44px] lg:text-[52px] font-extrabold mb-3">
+                    {"Kavipriya K".split("").map((char, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 1.0 + (i * 0.12), ease: "easeOut" }}
+                        className="inline-block bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent"
+                        style={{
+                          backgroundSize: '1100% 100%',
+                          backgroundPosition: `${i * 10}% 0`
+                        }}
+                      >
+                        {char === " " ? "\u00A0" : char}
+                      </motion.span>
+                    ))}
                   </span>
-                  <span className="block text-[18px] md:text-[24px] lg:text-[28px] font-medium text-slate-300">
-                    <TypewriterText text="Backend Developer | Python Developer | Full Stack Developer" delay={0.6} />
+                  
+                  {/* Animated Roles Container */}
+                  <span className="block text-[18px] md:text-[24px] lg:text-[28px] font-medium text-blue-400 relative h-[30px] md:h-[36px] lg:h-[42px] w-full">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={roleIndex}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                        className="absolute left-0 top-0"
+                      >
+                        {roles[roleIndex]}
+                      </motion.span>
+                    </AnimatePresence>
                   </span>
+
                   <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: "60px" }}
